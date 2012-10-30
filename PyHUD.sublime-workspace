@@ -227,28 +227,20 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "PyHUD.py",
-			"settings":
-			{
-				"buffer_size": 1261,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Maven/Maven.sublime-build",
 	"command_palette":
 	{
-		"height": 210.0,
+		"height": 85.0,
 		"selected_items":
 		[
 			[
-				"save",
-				"Project: Save As"
-			],
-			[
 				"close",
 				"Project: Close"
+			],
+			[
+				"save",
+				"Project: Save As"
 			],
 			[
 				"hask",
@@ -327,7 +319,7 @@
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 514.0
+		"width": 386.0
 	},
 	"console":
 	{
@@ -344,6 +336,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/aarste/projects/OBDII-HUD/PyHUD.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/__init__.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/core.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/commands.py",
@@ -470,8 +463,7 @@
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/sdi-autoloader.init",
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.spec",
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.sublime-project",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/autoloader.init",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/target/autoloader.init"
+		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/autoloader.init"
 	],
 	"find":
 	{
@@ -626,36 +618,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "PyHUD.py",
-					"settings":
-					{
-						"buffer_size": 1261,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								213,
-								213
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1351521358.54,
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 40.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
