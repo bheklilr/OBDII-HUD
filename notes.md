@@ -18,4 +18,5 @@ PyHUD - Controller, is the entry point of the program
 
 PyHUD opens the connection to the OBD2 via bluetooth or usb, reads data, parses
 it, then passes it to the display module where it is rendered on screen.  The
-mobile module is used when a phone is either connected
+mobile module is used when a phone is connected via bluetooth (and maybe USB) to
+interface with a simple app to modify settings and to retrieve historical data.

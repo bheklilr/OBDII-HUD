@@ -2,8 +2,8 @@
     "folders":
     [
         {
-            "path": "/C/Users/aarste/projects/PyHUD",
-            "file_exclude_patterns": [".pyc", ".git"]
+            "path": "/C/Users/aarste/projects/OBDII-HUD",
+            "file_exclude_patterns": [".pyc", ".git", ".gitignore"]
         }
     ]
 }

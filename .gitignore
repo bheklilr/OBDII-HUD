@@ -25,3 +25,12 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Virtualenv
+Include
+Lib
+Scripts
+share
+
+# Sublime Text 2
+PyHUD.sublime-workspace
