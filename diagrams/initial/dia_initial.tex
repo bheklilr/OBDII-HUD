@@ -6,8 +6,9 @@
 \begin{document}
 
 \tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!40, drop shadow, text centered, anchor=north, text=black, text width=5cm]
-\tikzstyle{comment}=[rectangle, draw=black, rounded corners, fill=green, drop shadow, text centered, anchor=north, text=white, text width=3cm]
+
 \tikzstyle{myarrow}=[->, .=close triangle 90, thick]
+
 \tikzstyle{line}=[-, thick]
 
 \begin{center}
@@ -23,21 +24,49 @@
                 \textbf{OBDII}
                 \nodepart{second}Controls the connection to the OBDII sensor and parses output
             };
-        \draw[myarrow] (obdII.north) -- ++(0, 1) -| (obdIIhud.south);
+            \draw[myarrow] (obdII.north) -- ++(0, 1) -| (obdIIhud.south);
+            \node (aux01) [below=of obdII] {};
+            \node (comm) [abstract, text width=4cm, rectangle split, rectangle split parts=2, left=of aux01]
+                {
+                    \textbf{Communcations}
+                    \nodepart{second}Handles the IO with the OBDII sensor
+                };
+                \draw[myarrow] (comm.north) -- ++(0, 0.3) -| ([xshift=-1cm] obdII.south);
+            \node (obdIIdata) [abstract, text width=4cm, rectangle split, rectangle split parts=2, right=of aux01]
+                {
+                    \textbf{Data}
+                    \nodepart{second}Parses data into useable structures
+                };
+
+                \node (obdIIbt) [abstract, text width=4cm, rectangle split, rectangle split parts=2, below=of comm]
+                    {
+                        \textbf{OBDII Bluetooth}
+                        \nodepart{second}Connects to the OBDII sensor via Bluetooth
+                    };
+                \draw[line] (obdIIbt.east) -- ++(1.5, 0);
+
+                \node (obdIIusb) [abstract, text width=4cm, rectangle split, rectangle split parts=2, below=of obdIIdata]
+                    {
+                        \textbf{OBDII USB}
+                        \nodepart{second}Connects to the OBDII sensor via USB
+                    };
+                \draw[myarrow] (obdIIusb.west) -| ([xshift=1.5cm, yshift=-1.5cm] comm.east) -| (comm.south);
+
+            \draw[myarrow] (obdIIdata.north) -- ++(0, 0.3) -| ([xshift=1cm] obdII.south);
 
         \node (display) [abstract, rectangle split, rectangle split parts=2, left=of obdII]
             {
                 \textbf{Display}
                 \nodepart{second}Transforms the raw data into meaningful graphs
             };
-        \draw[myarrow] (display.north) -- ++(0, 1) -| ([xshift=-1cm] obdIIhud.south);
+            \draw[myarrow] (display.north) -- ++(0, 1) -| ([xshift=-1cm] obdIIhud.south);
 
         \node (settings) [abstract, rectangle split, rectangle split parts=2, right=of obdII]
             {
                 \textbf{Settings}
                 \nodepart{second}Uses a JSON backend to provide dynamic configuration
             };
-        \draw[myarrow] (settings.north) -- ++(0, 1) -| ([xshift=1cm] obdIIhud.south);
+            \draw[myarrow] (settings.north) -- ++(0, 1) -| ([xshift=1cm] obdIIhud.south);
     \end{tikzpicture}
 \end{center}
 
