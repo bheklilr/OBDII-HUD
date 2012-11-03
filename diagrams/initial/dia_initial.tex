@@ -5,68 +5,101 @@
 
 \begin{document}
 
-\tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!40, drop shadow, text centered, anchor=north, text=black, text width=5cm]
+\tikzstyle{mybox}=[rectangle, rectangle split, rectangle split parts=2, draw=black, rounded corners, fill=blue!40, drop shadow, text centered, text=black, text width=5cm, anchor=north]
 
-\tikzstyle{myarrow}=[->, .=close triangle 90, thick]
+\tikzstyle{myarrow}=[->, >=open triangle 60, thick]
 
 \tikzstyle{line}=[-, thick]
 
 \begin{center}
     \begin{tikzpicture}[node distance=1.5cm]
-        \node (obdIIhud) [abstract, rectangle split, rectangle split parts=2]
+        \node (obdIIhud) [mybox, ]
             {
                 \textbf{OBDII-HUD}
                 \nodepart{second}Software to connect to an OBDII sensor and display real-time information on the windshield of a vehicle.
             };
-
-        \node (obdII) [abstract, rectangle split, rectangle split parts=2, below=of obdIIhud]
+        % Begin OBDII
+        \node (obdII) [mybox, below=of obdIIhud]
             {
                 \textbf{OBDII}
                 \nodepart{second}Controls the connection to the OBDII sensor and parses output
             };
             \draw[myarrow] (obdII.north) -- ++(0, 1) -| (obdIIhud.south);
+
             \node (aux01) [below=of obdII] {};
-            \node (comm) [abstract, text width=4cm, rectangle split, rectangle split parts=2, left=of aux01]
+            \node (comm) [mybox, text width=4cm, left=of aux01]
                 {
                     \textbf{Communcations}
                     \nodepart{second}Handles the IO with the OBDII sensor
                 };
                 \draw[myarrow] (comm.north) -- ++(0, 0.3) -| ([xshift=-1cm] obdII.south);
-            \node (obdIIdata) [abstract, text width=4cm, rectangle split, rectangle split parts=2, right=of aux01]
+
+            \node (obdIIdata) [mybox, text width=4cm, right=of aux01]
                 {
                     \textbf{Data}
                     \nodepart{second}Parses data into useable structures
                 };
+                \draw[myarrow] (obdIIdata.north) -- ++(0, 0.3) -| ([xshift=1cm] obdII.south);
 
-                \node (obdIIbt) [abstract, text width=4cm, rectangle split, rectangle split parts=2, below=of comm]
+                \node (obdIIbt) [mybox, text width=4cm, below=of comm]
                     {
                         \textbf{OBDII Bluetooth}
                         \nodepart{second}Connects to the OBDII sensor via Bluetooth
                     };
-                \draw[line] (obdIIbt.east) -- ++(1.5, 0);
+                    \draw[line] (obdIIbt.east) -- ++(1.5, 0);
 
-                \node (obdIIusb) [abstract, text width=4cm, rectangle split, rectangle split parts=2, below=of obdIIdata]
+                \node (obdIIusb) [mybox, text width=4cm, below=of obdIIdata]
                     {
                         \textbf{OBDII USB}
                         \nodepart{second}Connects to the OBDII sensor via USB
                     };
-                \draw[myarrow] (obdIIusb.west) -| ([xshift=1.5cm, yshift=-1.5cm] comm.east) -| (comm.south);
+                    \draw[myarrow] (obdIIusb.west) -| ([xshift=1.5cm, yshift=-1.5cm] comm.east) -| (comm.south);
+        % End OBDII
 
-            \draw[myarrow] (obdIIdata.north) -- ++(0, 0.3) -| ([xshift=1cm] obdII.south);
-
-        \node (display) [abstract, rectangle split, rectangle split parts=2, left=of obdII]
+        % Begin Display
+        \node (display) [mybox, left=of obdII.north west, anchor=north east]
             {
                 \textbf{Display}
                 \nodepart{second}Transforms the raw data into meaningful graphs
             };
             \draw[myarrow] (display.north) -- ++(0, 1) -| ([xshift=-1cm] obdIIhud.south);
 
-        \node (settings) [abstract, rectangle split, rectangle split parts=2, right=of obdII]
+            \node (display_core) [mybox, below=7cm of display]
+                {
+                    \textbf{Core}
+                    \nodepart{second}Contains higher level drawing functions to create complicated interfaces
+                };
+                \draw[myarrow] (display_core.north) -- (display.south);
+
+                \node (display_core_drawing) [mybox, below=of display_core]
+                    {
+                        \textbf{Drawing}
+                        \nodepart{second}Implements resusable and simple drawing methods deriving from the graphics engine
+                    };
+                    \draw[myarrow] (display_core_drawing.north) -- (display_core.south);
+
+            \node (display_gui) [mybox, right=of display_core.north east, anchor=north west]
+                {
+                    \textbf{GUI}
+                    \nodepart{second}Implementation the graphic user interface framework that can be dynamically generated from the settings
+                };
+                \draw[line] (display_gui.north) -- ++(0, 0.5) -- ([yshift=0.5cm] display_core.north);
+        % End Display
+
+        % Start Settings
+        \node (settings) [mybox, right=of obdII.north east, anchor=north west]
             {
                 \textbf{Settings}
-                \nodepart{second}Uses a JSON backend to provide dynamic configuration
+                \nodepart{second}Implementation of dynamic settings that can be used to construct the interface
             };
             \draw[myarrow] (settings.north) -- ++(0, 1) -| ([xshift=1cm] obdIIhud.south);
+
+            \node (settings_parser) [mybox, right=of display_gui.north east, anchor=north west]
+                {
+                    \textbf{Parser}
+                    \nodepart{second}The JSON backend for the settings manager
+                };
+                \draw[myarrow] (settings_parser.north) -- (settings.south);
     \end{tikzpicture}
 \end{center}
 
