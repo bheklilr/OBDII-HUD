@@ -3,7 +3,7 @@
     [
         {
             "path": "/C/Users/aarste/projects/OBDII-HUD",
-            "file_exclude_patterns": [".pyc", ".git", ".gitignore"]
+            "file_exclude_patterns": [".pyc", ".git", ".aux", ".pdf", ".dvi"]
         }
     ]
 }

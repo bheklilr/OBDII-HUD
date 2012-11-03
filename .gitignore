@@ -33,4 +33,10 @@ Scripts
 share
 
 # Sublime Text 2
-PyHUD.sublime-workspace
+*.sublime-workspace
+
+# LaTeX
+*.aux
+*.log
+*.dvi
+*.pdf

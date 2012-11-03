@@ -227,6 +227,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "notes.md",
+			"settings":
+			{
+				"buffer_size": 1052,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Maven/Maven.sublime-build",
 	"command_palette":
@@ -336,6 +344,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/aarste/projects/OBDII-HUD/.gitignore",
 		"/C/Users/aarste/projects/OBDII-HUD/PyHUD.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/__init__.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/core.py",
@@ -462,8 +471,7 @@
 		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/sdi-autoloader.init",
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.spec",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.sublime-project",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/autoloader.init"
+		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.sublime-project"
 	],
 	"find":
 	{
@@ -618,8 +626,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "notes.md",
+					"settings":
+					{
+						"buffer_size": 1052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1052,
+								1052
+							]
+						],
+						"settings":
+						{
+							"sorttabs_lastactivated": 1351712360.05,
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -668,6 +706,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"notes",
+				"notes.md"
+			],
 			[
 				"pe",
 				"projecteuler/pe39.hs"
@@ -962,7 +1004,7 @@
 		[
 			[
 				"",
-				"/C/Users/aarste/projects/haskell/projecteuler/projecteuler-haskell.sublime-project"
+				"/C/Users/aarste/projects/drools/projecteuler/pe-drools.sublime-project"
 			]
 		],
 		"width": 380.0
