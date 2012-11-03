@@ -1,10 +1,44 @@
 \documentclass{minimal}
-  \usepackage[a4paper,margin=1.5cm]{geometry}
+  \usepackage[a4paper,margin=1cm]{geometry}
   \usepackage{tikz}
   \usetikzlibrary{positioning,shapes,shadows,arrows}
 
 \begin{document}
 
+\tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!40, drop shadow, text centered, anchor=north, text=black, text width=5cm]
+\tikzstyle{comment}=[rectangle, draw=black, rounded corners, fill=green, drop shadow, text centered, anchor=north, text=white, text width=3cm]
+\tikzstyle{myarrow}=[->, .=close triangle 90, thick]
+\tikzstyle{line}=[-, thick]
 
+\begin{center}
+    \begin{tikzpicture}[node distance=1.5cm]
+        \node (obdIIhud) [abstract, rectangle split, rectangle split parts=2]
+            {
+                \textbf{OBDII-HUD}
+                \nodepart{second}Software to connect to an OBDII sensor and display real-time information on the windshield of a vehicle.
+            };
+
+        \node (obdII) [abstract, rectangle split, rectangle split parts=2, below=of obdIIhud]
+            {
+                \textbf{OBDII}
+                \nodepart{second}Controls the connection to the OBDII sensor and parses output
+            };
+        \draw[myarrow] (obdII.north) -- ++(0, 1) -| (obdIIhud.south);
+
+        \node (display) [abstract, rectangle split, rectangle split parts=2, left=of obdII]
+            {
+                \textbf{Display}
+                \nodepart{second}Transforms the raw data into meaningful graphs
+            };
+        \draw[myarrow] (display.north) -- ++(0, 1) -| ([xshift=-1cm] obdIIhud.south);
+
+        \node (settings) [abstract, rectangle split, rectangle split parts=2, right=of obdII]
+            {
+                \textbf{Settings}
+                \nodepart{second}Uses a JSON backend to provide dynamic configuration
+            };
+        \draw[myarrow] (settings.north) -- ++(0, 1) -| ([xshift=1cm] obdIIhud.south);
+    \end{tikzpicture}
+\end{center}
 
 \end{document}
