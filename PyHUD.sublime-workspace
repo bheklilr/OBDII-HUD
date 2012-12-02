@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"tik",
+				"tikzstyle"
+			],
+			[
+				"cor",
+				"corners"
+			],
+			[
 				"Rect",
 				"Rectangle"
 			],
@@ -227,21 +235,25 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "notes.md",
-			"settings":
-			{
-				"buffer_size": 1052,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Maven/Maven.sublime-build",
 	"command_palette":
 	{
-		"height": 85.0,
+		"height": 160.0,
 		"selected_items":
 		[
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"latex",
+				"Set Syntax: LaTeX"
+			],
+			[
+				"snippet",
+				"Snippet: Quick start"
+			],
 			[
 				"close",
 				"Project: Close"
@@ -327,7 +339,7 @@
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 386.0
+		"width": 514.0
 	},
 	"console":
 	{
@@ -344,8 +356,16 @@
 	},
 	"file_history":
 	[
-		"/C/Users/aarste/projects/OBDII-HUD/.gitignore",
+		"/C/Users/aarste/projects/OBDII-HUD/diagrams/initial/dia_initial.tex",
 		"/C/Users/aarste/projects/OBDII-HUD/PyHUD.py",
+		"/C/Users/aarste/projects/OBDII-HUD/.gitignore",
+		"/C/Users/aarste/projects/OBDII-HUD/notes.md",
+		"/C/Users/aarste/projects/OBDII-HUD/diagrams/initial/dia_initial.pdf",
+		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/User/LaTeX.sublime-settings",
+		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/LaTeXTools/LaTeXTools Preferences.sublime-settings",
+		"/C/Users/aarste/projects/OBDII-HUD/PyHUD.sublime-project",
 		"/C/Users/aarste/projects/PyHUD/obd2/__init__.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/core.py",
 		"/C/Users/aarste/projects/PyHUD/obd2/commands.py",
@@ -430,8 +450,6 @@
 		"/C/Users/aarste/Desktop/DatabaseConnectionChecker.java",
 		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/pom.xml",
-		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/AutocloseTags/autoclose_tags.py",
 		"/C/product/sdi-autoloader/clients/client1/test.dat",
 		"/C/Users/aarste/Downloads/sharedstash.bin",
@@ -465,13 +483,7 @@
 		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/User/Java.sublime-settings",
 		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/Alignment/Base File.sublime-settings",
 		"/C/Users/aarste/Desktop/Problem_20120917_1713.mht",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/Configuration.xml",
-		"/C/Users/aarste/projects/Machine Learning/01-Introduction/data/ufo/16154.yaml",
-		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/iTodo/Default (Windows).sublime-keymap",
-		"/C/Users/aarste/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/sdi-autoloader.init",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.spec",
-		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/autoloader.sublime-project"
+		"/C/SVN_Checkout/autoloader-1.0.0_DEV_20120828/autoloader/src/main/Configuration.xml"
 	],
 	"find":
 	{
@@ -487,9 +499,19 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"\\\\begin\\{center\\}(.*)\\\\end\\{center\\}",
+			"(\\\\textbf\\{.*\\})",
+			", , ",
+			", ",
+			"abstract",
+			"rectangle split, rectangle split parts=2",
+			"auto_complete",
+			"0.8",
+			"3cm",
+			"AuxNode01",
 			"_command",
 			"Rectangle",
 			"Rectangle a",
@@ -608,9 +630,13 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"$1",
+			"\\\\begin{center}$1\\\\end{center}",
+			"\\begin{center}$1\\end{center}",
+			"\\begin{center}\\1\\end{center}",
 			",",
 			"+",
 			"Username",
@@ -626,38 +652,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "notes.md",
-					"settings":
-					{
-						"buffer_size": 1052,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1052,
-								1052
-							]
-						],
-						"settings":
-						{
-							"sorttabs_lastactivated": 1351712360.05,
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -707,6 +703,30 @@
 		"selected_items":
 		[
 			[
+				"tex",
+				"diagrams/initial/dia_initial.tex"
+			],
+			[
+				"",
+				".gitignore"
+			],
+			[
+				"not",
+				"notes.md"
+			],
+			[
+				"git",
+				".gitignore"
+			],
+			[
+				"gitign",
+				".gitignore"
+			],
+			[
+				"sublime-",
+				"PyHUD.sublime-project"
+			],
+			[
 				"notes",
 				"notes.md"
 			],
@@ -717,10 +737,6 @@
 			[
 				"pe84",
 				"projecteuler/pe84.hs"
-			],
-			[
-				"",
-				"testing.hs"
 			],
 			[
 				"75",
@@ -1004,7 +1020,7 @@
 		[
 			[
 				"",
-				"/C/Users/aarste/projects/drools/projecteuler/pe-drools.sublime-project"
+				"/C/Users/aarste/projects/haskell/projecteuler/projecteuler-haskell.sublime-project"
 			]
 		],
 		"width": 380.0

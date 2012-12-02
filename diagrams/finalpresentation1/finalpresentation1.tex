@@ -1,0 +1,95 @@
+\documentclass{minimal}
+\usepackage[a4paper,margin=1cm, landscape]{geometry}
+\usepackage{tikz}
+\usepackage[none]{hyphenat}
+\usetikzlibrary{positioning,shapes,fit,calc,shadows,arrows}
+
+\begin{document}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\tikzstyle{block}=[rectangle, draw=black, rounded corners, text=black, rectangle split, rectangle split parts=3, text centered, anchor=north, rectangle split draw splits=false]
+
+\begin{center}
+
+    \begin{tikzpicture}[node distance=0.25in]
+        \node (toplevel) [block, text width=8in] {
+            \textbf{OBDII-HUD}
+            \nodepart{second} Software to connect to an OBDII sensor and display real-time information on the windshield of a vehicle.
+            \nodepart{third}
+                \begin{tikzpicture}[node distance=0.25in]
+                    \node (obd2) [block, text width=7in, fill=blue!35] {
+                        \textbf{OBDII}
+                        \nodepart{second} Controls the connection to the OBDII sensor and parses output
+                        \nodepart{third}
+                            \begin{tikzpicture}[node distance=0.25in]
+                                \node (data) [block, text width=2.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
+                                    \textbf{Data}
+                                    \nodepart{second} Parses data into useable structures
+                                };
+                                \node (comm) [block, text width=3in, fill=blue!15, anchor=west, xshift=0.125in] {
+                                    \textbf{Communcations}
+                                    \nodepart{second} Handles the IO with the OBDII sensor
+                                    \nodepart{third}
+                                        \begin{tikzpicture}[node distance=0.125in]
+                                            \node (obd2bt) [block, text width=2.5 in, fill=blue!35, rectangle split parts=2] {
+                                                \textbf{OBDII Bluetooth}
+                                                \nodepart{second}Connects to the OBDII sensor via Bluetooth
+                                            };
+                                            \node (obd2usb) [block, text width=2.5in, fill=blue!35, rectangle split parts=2, below=of obd2bt] {
+                                                \textbf{OBDII USB}
+                                                \nodepart{second} Connects to the OBDII sensor via USB
+                                            };
+                                        \end{tikzpicture}
+                                };
+                            \end{tikzpicture}
+                    };
+
+                    \node (display) [block, text width=7in, fill=blue!35, below=of obd2] {
+                        \textbf{Display}
+                        \nodepart{second}Transforms the raw data into meaningful graphs.
+                        \nodepart{third}
+                            \begin{tikzpicture}[node distance=0.25in]
+                                \node (gui) [block, text width=2.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
+                                    \textbf{GUI}
+                                    \nodepart{second} Implementation the graphic user interface framework that can be dynamically generated from the settings
+                                };
+                                \node (core) [block, text width=3in, fill=blue!15, anchor=west, xshift=0.125in] {
+                                    \textbf{Core}
+                                    \nodepart{second} Contains higher level drawing functions to create complicated interfaces
+                                    \nodepart{third}
+                                        \begin{tikzpicture}[node distance=0.25in]
+                                            \node (drawing) [block, text width=2.5in, fill=blue!35, rectangle split parts=2] {
+                                                \textbf{Drawing}
+                                                \nodepart{second} Implements resusable and simple drawing methods deriving from the graphics engine
+                                            };
+                                        \end{tikzpicture}
+                                };
+                            \end{tikzpicture}
+                    };
+
+                    \node (settings) [block, text width=7in, fill=blue!35, below=of display] {
+                        \textbf{Settings}
+                        \nodepart{second}Implementation of dynamic settings that can be used to construct the interface
+                        \nodepart{third}
+                            \begin{tikzpicture}
+                                \node (parser) [block, text width=6in, fill=blue!15, rectangle split parts=2] {
+                                    \textbf{Parser}
+                                    \nodepart{second}The JSON backend for the settings manager
+                                };
+                            \end{tikzpicture}
+                    };
+                \end{tikzpicture}
+        };
+        \begin{pgfonlayer}{background}
+            \path (toplevel.west |- toplevel.north) + (-0.5, 0.5) node (a) {};
+            \path (toplevel.east |- toplevel.south) + (0.5, -0.5) node (b) {};
+            \path [fill=blue!15, rounded corners, draw=black!50] (a) rectangle (b);
+        \end{pgfonlayer}
+    \end{tikzpicture}
+
+\end{center}
+
+\end{document}
