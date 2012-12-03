@@ -1,9 +1,10 @@
 \documentclass{standalone}
-\usepackage{tikz}
-\usepackage[none]{hyphenat}
-\usetikzlibrary{positioning,shapes,fit,calc,shadows,arrows}
+  \usepackage{tikz}
+  \usepackage[none]{hyphenat}
+  \usetikzlibrary{positioning,shapes,fit,calc,shadows,arrows}
 
 \begin{document}
+
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
@@ -14,79 +15,75 @@
 \newcommand{\blocktitle}[1]{\fntsize{16}\textbf{#1}}
 \newcommand{\blocktext}[1]{\nodepart{second}\fntsize{14}#1}
 
-%\begin{center}
-
-    \begin{tikzpicture}
-        \node (toplevel) [block, text width=9in, fill=blue!15] {
-            \blocktitle{OBDII-HUD}
-            \blocktext{Top-level package containing the libraries and scripts needed to display OBDII data}
-            \nodepart{third}
-                \begin{tikzpicture}[node distance=0.125in]
-                    \node (obd2) [block, text width=8in, fill=blue!35] {
-                        \blocktitle{OBDII}
-                        \blocktext{Implementation of communications protocols and data parsing for the OBDII sensor}
-                        \nodepart{third}
-                            \begin{tikzpicture}[node distance=0.25in]
-                                \node (data) [block, text width=3.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
-                                    \blocktitle{Data}
-                                    \blocktext{Parses OBDII data into useful and meaningful data structures}
-                                };
-                                \node (comm) [block, text width=3.5in, fill=blue!15, anchor=west, xshift=0.125in] {
-                                    \blocktitle{Communcations}
-                                    \blocktext{Handles the IO with the OBDII sensor}
-                                    \nodepart{third}
-                                        \begin{tikzpicture}[node distance=0.125in]
-                                            \node (obd2bt) [block, text width=3in, fill=blue!35, rectangle split parts=2] {
-                                                \blocktitle{OBDII Bluetooth}
-                                                \blocktext{Connects to the OBDII sensor via Bluetooth}
-                                            };
-                                            \node (obd2usb) [block, text width=3in, fill=blue!35, rectangle split parts=2, below=of obd2bt] {
-                                                \blocktitle{OBDII USB}
-                                                \blocktext{Connects to the OBDII sensor via USB}
-                                            };
-                                        \end{tikzpicture}
-                                };
-                            \end{tikzpicture}
+\begin{tikzpicture}
+  \node (toplevel) [block, text width=9in, fill=blue!15] {
+    \blocktitle{OBDII-HUD}
+    \blocktext{Top-level package containing the libraries and scripts needed to display OBDII data}
+    \nodepart{third}
+      \begin{tikzpicture}[node distance=0.125in]
+        \node (obd2) [block, text width=8in, fill=blue!35] {
+          \blocktitle{OBDII}
+          \blocktext{Implementation of communications protocols and data parsing for the OBDII sensor}
+          \nodepart{third}
+            \begin{tikzpicture}[node distance=0.25in]
+              \node (data) [block, text width=3.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
+                \blocktitle{Data}
+                \blocktext{Parses OBDII data into useful and meaningful data structures}
+              };
+              \node (comm) [block, text width=3.5in, fill=blue!15, anchor=west, xshift=0.125in] {
+                \blocktitle{Communcations}
+                \blocktext{Handles the IO with the OBDII sensor}
+                \nodepart{third}
+                  \begin{tikzpicture}[node distance=0.125in]
+                    \node (obd2bt) [block, text width=3in, fill=blue!35, rectangle split parts=2] {
+                      \blocktitle{OBDII Bluetooth}
+                      \blocktext{Connects to the OBDII sensor via Bluetooth}
                     };
-
-                    \node (display) [block, text width=8in, fill=blue!35, below=of obd2] {
-                        \blocktitle{Display}
-                        \blocktext{Transforms the parsed data into graphs and displays for the user}
-                        \nodepart{third}
-                            \begin{tikzpicture}[node distance=0.25in]
-                                \node (gui) [block, text width=3.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
-                                    \blocktitle{GUI}
-                                    \blocktext{Implementation the graphic user interface framework that can be dynamically generated from the }settings
-                                };
-                                \node (core) [block, text width=3.5in, fill=blue!15, anchor=west, xshift=0.125in] {
-                                    \blocktitle{Core}
-                                    \blocktext{Contains higher level drawing functions to create more complicated interfaces}
-                                    \nodepart{third}
-                                        \begin{tikzpicture}[node distance=0.25in]
-                                            \node (drawing) [block, text width=3in, fill=blue!35, rectangle split parts=2] {
-                                                \blocktitle{Drawing}
-                                                \blocktext{Implements resusable and simple drawing methods deriving from the graphics engine}
-                                            };
-                                        \end{tikzpicture}
-                                };
-                            \end{tikzpicture}
+                    \node (obd2usb) [block, text width=3in, fill=blue!35, rectangle split parts=2, below=of obd2bt] {
+                      \blocktitle{OBDII USB}
+                      \blocktext{Connects to the OBDII sensor via USB}
                     };
-
-                    \node (settings) [block, text width=8in, fill=blue!35, below=of display] {
-                        \blocktitle{Settings}
-                        \blocktext{Implementation of dynamic settings that can be used to construct the interface and select desired data}
-                        \nodepart{third}
-                            \begin{tikzpicture}
-                                \node (parser) [block, text width=6in, fill=blue!15, rectangle split parts=2] {
-                                    \blocktitle{Parser}
-                                    \blocktext{The JSON backend for the settings manager}
-                                };
-                            \end{tikzpicture}
-                    };
-                \end{tikzpicture}
+                  \end{tikzpicture}
+              };
+            \end{tikzpicture}
         };
-    \end{tikzpicture}
 
-%\end{center}
+        \node (display) [block, text width=8in, fill=blue!35, below=of obd2] {
+          \blocktitle{Display}
+          \blocktext{Transforms the parsed data into graphs and displays for the user}
+          \nodepart{third}
+            \begin{tikzpicture}[node distance=0.25in]
+              \node (gui) [block, text width=3.5in, fill=blue!15, rectangle split parts=2, anchor=east, xshift=-0.125in] {
+                \blocktitle{GUI}
+                \blocktext{Implementation the graphic user interface framework that can be dynamically generated from the }settings
+              };
+              \node (core) [block, text width=3.5in, fill=blue!15, anchor=west, xshift=0.125in] {
+                \blocktitle{Core}
+                \blocktext{Contains higher level drawing functions to create more complicated interfaces}
+                \nodepart{third}
+                  \begin{tikzpicture}[node distance=0.25in]
+                    \node (drawing) [block, text width=3in, fill=blue!35, rectangle split parts=2] {
+                      \blocktitle{Drawing}
+                      \blocktext{Implements resusable and simple drawing methods deriving from the graphics engine}
+                    };
+                  \end{tikzpicture}
+              };
+            \end{tikzpicture}
+        };
+
+        \node (settings) [block, text width=8in, fill=blue!35, below=of display] {
+          \blocktitle{Settings}
+          \blocktext{Implementation of dynamic settings that can be used to construct the interface and select desired data}
+          \nodepart{third}
+            \begin{tikzpicture}
+              \node (parser) [block, text width=6in, fill=blue!15, rectangle split parts=2] {
+                \blocktitle{Parser}
+                \blocktext{The JSON backend for the settings manager}
+              };
+            \end{tikzpicture}
+        };
+      \end{tikzpicture}
+  };
+\end{tikzpicture}
 
 \end{document}
