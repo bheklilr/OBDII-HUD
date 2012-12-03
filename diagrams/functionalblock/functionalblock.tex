@@ -1,0 +1,70 @@
+\documentclass{standalone}
+  \usepackage{tikz}
+  \usepackage[none]{hyphenat}
+  \usetikzlibrary{positioning,shapes,shadows,arrows,intersections}
+
+\begin{document}
+
+\newcommand{\fntsize}[1]{\fontsize{#1}{18}\selectfont}
+\newcommand{\blocktitle}[1]{\fntsize{12}#1}
+\newcommand{\blocktext}[1]{\nodepart{second}\fntsize{10}#1}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\tikzstyle{entity} = [rectangle, fill=blue!15, draw=black, text width=1.5in,
+                      drop shadow, rectangle split, rectangle split parts=2,
+                      rectangle split draw splits=false, text centered]
+\tikzstyle{decision} = [diamond, fill=yellow!15, draw=black, text width=1in,
+                        drop shadow, text centered]
+
+\begin{tikzpicture}[node distance=0.5in]
+  \node(initial) [entity] {
+    \blocktitle{Initialize and connect to OBDII interface}
+    \blocktext{(Matt, Aaron)}
+  };
+  \node(collectData) [entity, right=of initial] {
+    \blocktitle{Collect data on Raspberry-Pi}
+    \blocktext{(Matt, Aaron)}
+  };
+  \node(processData) [entity, below=of collectData] {
+    \blocktitle{Process OBDII data into readable form}
+    \blocktext{(Matt, Aaron, Eric)}
+  };
+  \node(logData) [decision, right=of processData] {
+    \blocktitle{Log Data?}
+  };
+  \node(storeData) [entity, below=of logData] {
+    \blocktitle{Store Real-Time Data to Memory}
+    \blocktext{(Matt, Aaron, Eric)}
+  };
+  \node(logComplete) [decision, right=of storeData] {
+    \blocktitle{Logging Interval Complete?}
+  };
+  \node(exportData) [entity, below=of logComplete] {
+    \blocktitle{Export to SD Card in human-readable form (.csv)}
+    \blocktext{(Matt, Aaron)}
+  };
+  \node(displayData) [entity, right=2in of logData] {
+    \blocktitle{Display Real-Time Data}
+    \blocktext{(Matt, Aaron, Eric)}
+  };
+
+  \path[->]
+    (initial.east)      edge[thick]                    (collectData.west)
+    (collectData.south) edge[thick]                    (processData.north)
+    (processData.east)  edge[thick]                    (logData.west)
+    (logData.south)     edge[thick] node [right] {Yes} (storeData.north)
+    (logData.east)      edge[thick] node [above] {No}  (displayData.west)
+    (storeData.east)    edge[thick]                    (logComplete.west)
+    (logComplete.south) edge[thick] node [right] {Yes} (exportData.north)
+    ;
+  \path[draw, name path=p1, thick, ->] (exportData.east) -| (displayData.south);
+  \path[name path=line1] (logComplete.east) -- ++(1.5, 0);
+  \path[draw, name intersections={of=p1 and line1}, black, thick, ->] (logComplete.east) -- node[above] {No} (intersection-1);
+  \path[draw, thick, ->] (displayData.north) |- (collectData.east);
+\end{tikzpicture}
+
+
+\end{document}
