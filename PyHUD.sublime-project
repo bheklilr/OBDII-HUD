@@ -3,6 +3,11 @@
     [
         {
             "path": "/C/Users/aarste/projects/OBDII-HUD",
+            "file_exclude_patterns": [".pyc", ".git", ".aux", ".pdf", ".dvi"],
+            "folder_exclude_patterns": ["Include", "Lib", "Scripts", "share", "OBDII-HUD"]
+        },
+        {
+            "path": "/C/Users/aarste/projects/OBDII-HUD/OBDII-HUD",
             "file_exclude_patterns": [".pyc", ".git", ".aux", ".pdf", ".dvi"]
         }
     ]
