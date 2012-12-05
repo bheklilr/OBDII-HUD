@@ -22,33 +22,33 @@
 \begin{tikzpicture}[node distance=0.5in]
   \node(initial) [entity] {
     \blocktitle{Initialize and connect to OBDII interface}
-    \blocktext{(Matt, Aaron)}
+    \blocktext{(Matt)}
   };
   \node(collectData) [entity, right=of initial] {
     \blocktitle{Collect data on Raspberry-Pi}
-    \blocktext{(Matt, Aaron)}
+    \blocktext{(Matt)}
   };
   \node(processData) [entity, below=of collectData] {
     \blocktitle{Process OBDII data into readable form}
-    \blocktext{(Matt, Aaron, Eric)}
+    \blocktext{(Eric)}
   };
   \node(logData) [decision, right=of processData] {
     \blocktitle{Log Data?}
   };
   \node(storeData) [entity, below=of logData] {
     \blocktitle{Store Real-Time Data to Memory}
-    \blocktext{(Matt, Aaron, Eric)}
+    \blocktext{(Aaron)}
   };
   \node(logComplete) [decision, right=of storeData] {
     \blocktitle{Logging Interval Complete?}
   };
   \node(exportData) [entity, below=of logComplete] {
     \blocktitle{Export to SD Card in human-readable form (.csv)}
-    \blocktext{(Matt, Aaron)}
+    \blocktext{(Eric)}
   };
   \node(displayData) [entity, right=2in of logData] {
     \blocktitle{Display Real-Time Data}
-    \blocktext{(Matt, Aaron, Eric)}
+    \blocktext{(Aaron)}
   };
 
   \path[->]
