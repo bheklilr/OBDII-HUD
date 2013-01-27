@@ -51,7 +51,6 @@ class OBD2(object):
         pass
 
     def read(self):
-        """Read until '>' is receivied"""
         pass
 
     def deviceName(self):
